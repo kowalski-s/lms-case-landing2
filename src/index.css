@@ -26,6 +26,10 @@ body {
   @apply border border-white/10 shadow-[0_0_25px_rgba(169,117,255,0.3),0_0_25px_rgba(78,208,255,0.25)];
 }
 
+.soft-glow {
+  @apply shadow-[0_0_18px_rgba(169,117,255,0.14),0_0_18px_rgba(78,208,255,0.14)] border border-white/10;
+}
+
 .stage-perspective { perspective: 1000px; }
 
 .heading-gradient {

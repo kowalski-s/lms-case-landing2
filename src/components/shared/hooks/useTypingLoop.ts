@@ -23,8 +23,10 @@ export function useTypingLoop(lines: string[], speed = 35, pause = 1500) {
       if (text.length > 0) {
         t = window.setTimeout(() => setText(current.slice(0, text.length - 1)), speed)
       } else {
-        setPhase('typing')
-        setIndex((i) => (i + 1) % lines.length)
+        t = window.setTimeout(() => {
+          setPhase('typing')
+          setIndex((i) => (i + 1) % lines.length)
+        }, 10)
       }
     }
 

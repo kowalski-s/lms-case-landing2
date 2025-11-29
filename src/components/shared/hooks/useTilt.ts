@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useMotionValue, useTransform } from 'framer-motion'
+import { useMotionValue, useTransform } from 'framer-motion'
 
 export function useTilt(maxDeg: number = 5) {
   const ref = useRef<HTMLDivElement>(null)
@@ -25,21 +25,4 @@ export function useTilt(maxDeg: number = 5) {
   }
 
   return { ref, rotateX, rotateY, onMouseMove, onMouseLeave }
-}
-
-export const Tiltable = (
-  { children, className, maxDeg = 5 }: { children: React.ReactNode; className?: string; maxDeg?: number }
-) => {
-  const { ref, rotateX, rotateY, onMouseMove, onMouseLeave } = useTilt(maxDeg)
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
-      style={{ rotateX, rotateY }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
 }

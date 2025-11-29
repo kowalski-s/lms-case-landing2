@@ -1,11 +1,14 @@
-import { useMotionValue, useTransform } from 'framer-motion'
+import { useMotionValue, useTransform, useSpring } from 'framer-motion'
 
-export function useMouseParallax(strength: number = 20) {
+export function useMouseParallax(max: number = 12) {
   const mx = useMotionValue(0)
   const my = useMotionValue(0)
 
-  const x = useTransform(mx, (v) => v * strength)
-  const y = useTransform(my, (v) => v * strength)
+  const xRaw = useTransform(mx, (v) => v * max)
+  const yRaw = useTransform(my, (v) => v * max)
+
+  const x = useSpring(xRaw, { stiffness: 120, damping: 20 })
+  const y = useSpring(yRaw, { stiffness: 120, damping: 20 })
 
   function onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
     const rect = (e.currentTarget as HTMLDivElement).getBoundingClientRect()

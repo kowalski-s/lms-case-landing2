@@ -39,7 +39,6 @@ export default function CaseGallery() {
               const offset = ((i - active + slides.length) % slides.length)
               const z = 100 - Math.abs(offset) * 40
               const rotate = offset === 0 ? 0 : offset > 0 ? -18 : 18
-              const scale = offset === 0 ? 1.05 : 0.86
               const x = offset * 80
               return (
                 <motion.div
